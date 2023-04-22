@@ -1,0 +1,370 @@
+local Config = {
+    WindowName = "Seos's Private Scripts",
+	Color = Color3.fromRGB(0,255,168),
+	Keybind = Enum.KeyCode.RightControl
+}
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+end)
+
+local Name = "Creatures of Sonarina.json"
+
+Des = {}
+if makefolder then
+    makefolder("V.G Hub")
+end
+
+local Settings
+
+if
+    not pcall(
+        function()
+            readfile("V.G Hub//" .. Name)
+        end
+    )
+ then
+    writefile("V.G Hub//" .. Name, game:GetService("HttpService"):JSONEncode(Des))
+end
+
+Settings = game:GetService("HttpService"):JSONDecode(readfile("V.G Hub//" .. Name))
+
+local function Save()
+    writefile("V.G Hub//" .. Name, game:GetService("HttpService"):JSONEncode(Settings))
+end
+
+local args = {
+    [1] = "spawn",
+    [2] = {
+        ["Info"] = {},
+        ["DinoType"] = "Kiiwin"
+    }
+}
+
+game:GetService("Players"):WaitForChild("movlng_on"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+
+
+local function Teleport(A, B)
+    local Deku
+    for i, v in pairs(A) do
+        if v.Name == "MotionTracker" then
+            Deku = v
+        end
+    end
+    for i, v in pairs(debug.getupvalues(require(Deku))) do
+        if type(v) == "function" then
+            if getinfo(v).name == "TeleportTo" then
+                setupvalue(v, 3, B)
+            end
+        end
+    end
+    return A, B, nil, nil
+end
+Models = getloadedmodules()
+local function getNearestMeat()
+    local TargetDistance = math.huge
+    local Target
+   for i,v in pairs(game:GetService("Workspace")["Easter Assets"].EggBasket:GetDescendants()) do
+        if v.Name == "Meshes/EggBasket_Basket" then 
+            local Mag =
+                (game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].Position -
+                v.Position).Magnitude
+            if Mag < TargetDistance then
+                TargetDistance = Mag
+                Target = v
+            end
+        end
+    end
+    return Target
+end
+local function getNearestGreens()
+   local TargetDistance = math.huge
+    local Target
+   for i,v in pairs(game:GetService("Workspace")["Easter Assets"].EggDump:GetDescendants()) do
+        if v.ClassName == "MeshPart" then 
+            local Mag =
+                (game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].Position -
+                v:FindFirstChild("Top").WorldPosition).Magnitude
+            if Mag < TargetDistance then
+                TargetDistance = Mag
+                Target = v
+            end
+        end
+    end
+    return Target
+end
+for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
+    if v:IsA("BasePart") then 
+        Teleport(Models,CFrame.new(v.Position - Vector3.new(0,-500,0))) wait(0.5)
+        Teleport(Models,CFrame.new(Vector3.new(0,500,0)))
+    end
+end 
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/1201for/V.G-Hub/main/test"))()
+local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
+
+local Tab1 = Window:CreateTab("Creatures of Sonaria")
+local Tab2 = Window:CreateTab("UI Settings")
+
+local Section1 = Tab1:CreateSection("Auto Farms")
+local Section3 = Tab2:CreateSection("Menu")
+local Section4 = Tab2:CreateSection("Background")
+
+
+
+local Toggle1 = Section1:CreateToggle("Auto TP", Settings.AutoAttack, function(State)
+Settings.AutoAttack = State
+spawn(function()
+    wait(2)
+    pcall(
+        function()
+             Teleport(Models, getNearestMeat().CFrame)
+   wait(0.2)
+  fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
+ end)
+end)
+end)
+
+local Toggle1 = Section1:CreateToggle("AutoEggs", Settings.AutoAttack, function(State)
+Settings.AutoAttack = State
+spawn(function()
+while Settings.AutoAttack do
+    wait()
+    pcall(
+        function()
+            game:GetService("Players").LocalPlayer.RemoteEvent:FireServer("drink",workspace.Water)
+            local args = {
+    [1] = "CollectEgg"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EggHuntMinigame"):FireServer(unpack(args))
+            wait (0.1)
+            Teleport(Models,getNearestGreens().CFrame)
+            wait (0.1)
+            getNearestGreens():Destroy()
+end)
+end
+end)
+end)
+
+local Toggle1 = Section1:CreateToggle("Auto Server Hop", Settings.AutoAttack, function(State)
+Settings.AutoAttack = State
+spawn(function()
+while Settings.AutoAttack do
+    wait(5)
+    pcall(
+        function()
+            local childrenInObject = game:GetService("Workspace")["Easter Assets"].EggDump:GetChildren() --returns a table
+	if #childrenInObject == 0 then
+            local PlaceID = game.PlaceId
+local AllIDs = {}
+local foundAnything = ""
+local actualHour = os.date("!*t").hour
+local Deleted = false
+local File = pcall(function()
+    AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+end)
+if not File then
+    table.insert(AllIDs, actualHour)
+    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+end
+function TPReturner()
+    local Site;
+    if foundAnything == "" then
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+    else
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+    end
+    local ID = ""
+    if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+        foundAnything = Site.nextPageCursor
+    end
+    local num = 0;
+    for i,v in pairs(Site.data) do
+        local Possible = true
+        ID = tostring(v.id)
+        if tonumber(v.maxPlayers) > tonumber(v.playing) then
+            for _,Existing in pairs(AllIDs) do
+                if num ~= 0 then
+                    if ID == tostring(Existing) then
+                        Possible = false
+                    end
+                else
+                    if tonumber(actualHour) ~= tonumber(Existing) then
+                        local delFile = pcall(function()
+                            delfile("NotSameServers.json")
+                            AllIDs = {}
+                            table.insert(AllIDs, actualHour)
+                        end)
+                    end
+                end
+                num = num + 1
+            end
+            if Possible == true then
+                table.insert(AllIDs, ID)
+                wait()
+                pcall(function()
+                    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                    wait()
+                    game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                end)
+                wait(4)
+            end
+        end
+    end
+end
+
+function Teleport()
+    while wait() do
+        pcall(function()
+            TPReturner()
+            if foundAnything ~= "" then
+                TPReturner()
+            end
+        end)
+    end
+end
+
+-- If you'd like to use a script before server hopping (Like a Automatic Chest collector you can put the Teleport() after it collected everything.
+Teleport()
+end
+end)
+end
+end)
+
+
+
+local Button1 = Section1:CreateButton("Teleport to Mission (Incase Auto Breaks)", function()
+
+   Teleport(Models, getNearestMeat().CFrame)
+   wait(0.2)
+  fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
+ end)
+
+local Button1 = Section1:CreateButton("Server Hop (Incase Auto Breaks)", function()
+local PlaceID = game.PlaceId
+local AllIDs = {}
+local foundAnything = ""
+local actualHour = os.date("!*t").hour
+local Deleted = false
+local File = pcall(function()
+    AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+end)
+if not File then
+    table.insert(AllIDs, actualHour)
+    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+end
+function TPReturner()
+    local Site;
+    if foundAnything == "" then
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+    else
+        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+    end
+    local ID = ""
+    if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+        foundAnything = Site.nextPageCursor
+    end
+    local num = 0;
+    for i,v in pairs(Site.data) do
+        local Possible = true
+        ID = tostring(v.id)
+        if tonumber(v.maxPlayers) > tonumber(v.playing) then
+            for _,Existing in pairs(AllIDs) do
+                if num ~= 0 then
+                    if ID == tostring(Existing) then
+                        Possible = false
+                    end
+                else
+                    if tonumber(actualHour) ~= tonumber(Existing) then
+                        local delFile = pcall(function()
+                            delfile("NotSameServers.json")
+                            AllIDs = {}
+                            table.insert(AllIDs, actualHour)
+                        end)
+                    end
+                end
+                num = num + 1
+            end
+            if Possible == true then
+                table.insert(AllIDs, ID)
+                wait()
+                pcall(function()
+                    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                    wait()
+                    game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                end)
+                wait(4)
+            end
+        end
+    end
+end
+
+function Teleport()
+    while wait() do
+        pcall(function()
+            TPReturner()
+            if foundAnything ~= "" then
+                TPReturner()
+            end
+        end)
+    end
+end
+
+-- If you'd like to use a script before server hopping (Like a Automatic Chest collector you can put the Teleport() after it collected everything.
+Teleport()
+end)
+
+
+local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
+	Window:Toggle(State)
+end)
+Toggle3:CreateKeybind(tostring(Config.Keybind):gsub("Enum.KeyCode.", ""), function(Key)
+	Config.Keybind = Enum.KeyCode[Key]
+end)
+Toggle3:SetState(true)
+Section3:CreateLabel("Credits Seos#2001")
+Section3:CreateLabel("Credits AlexR32#3232 Ui")
+Section3:CreateLabel("If you have issues DM me on Discord")
+local Colorpicker3 = Section3:CreateColorpicker("UI Color", function(Color)
+	Window:ChangeColor(Color)
+end)
+Colorpicker3:UpdateColor(Config.Color)
+
+-- credits to jan for patterns
+local Dropdown3 = Section4:CreateDropdown("Image", {"Default","Hearts","Abstract","Hexagon","Circles","Lace With Flowers","Floral"}, function(Name)
+	if Name == "Default" then
+		Window:SetBackground("2151741365")
+	elseif Name == "Hearts" then
+		Window:SetBackground("6073763717")
+	elseif Name == "Abstract" then
+		Window:SetBackground("6073743871")
+	elseif Name == "Hexagon" then
+		Window:SetBackground("6073628839")
+	elseif Name == "Circles" then
+		Window:SetBackground("6071579801")
+	elseif Name == "Lace With Flowers" then
+		Window:SetBackground("6071575925")
+	elseif Name == "Floral" then
+		Window:SetBackground("5553946656")
+	end
+end)
+Dropdown3:SetOption("Abstract")
+
+local Colorpicker4 = Section4:CreateColorpicker("Color", function(Color)
+	Window:SetBackgroundColor(Color)
+end)
+Colorpicker4:UpdateColor(Color3.new(100,100,100))
+
+local Slider3 = Section4:CreateSlider("Transparency",0,1,nil,false, function(Value)
+	Window:SetBackgroundTransparency(Value)
+end)
+Slider3:SetValue(0)
+
+local Slider4 = Section4:CreateSlider("Tile Scale",0,1,nil,false, function(Value)
+	Window:SetTileScale(Value)
+end)
+Slider4:SetValue(1)
+spawn(function()
+while wait() do
+Save()
+end end)
+end)
