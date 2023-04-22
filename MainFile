@@ -123,6 +123,8 @@ spawn(function()
 end)
 end)
 
+local done = false
+
 local Toggle1 = Section1:CreateToggle("AutoEggs", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
 spawn(function()
@@ -130,6 +132,7 @@ while Settings.AutoAttack do
     wait()
     pcall(
         function()
+	
             game:GetService("Players").LocalPlayer.RemoteEvent:FireServer("drink",workspace.Water)
             local args = {
     [1] = "CollectEgg"
@@ -140,6 +143,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EggHun
             Teleport(Models,getNearestGreens().CFrame)
             wait (0.1)
             getNearestGreens():Destroy()
+	    done = true
 end)
 end
 end)
@@ -152,6 +156,7 @@ while Settings.AutoAttack do
     wait(5)
     pcall(
         function()
+	if done = true then
             local childrenInObject = game:GetService("Workspace")["Easter Assets"].EggDump:GetChildren() --returns a table
 	if #childrenInObject == 0 then
             local PlaceID = game.PlaceId
