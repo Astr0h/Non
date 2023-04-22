@@ -31,7 +31,7 @@ Settings = game:GetService("HttpService"):JSONDecode(readfile("V.G Hub//" .. Nam
 local function Save()
     writefile("V.G Hub//" .. Name, game:GetService("HttpService"):JSONEncode(Settings))
 end
-game:GetService("Players")LocalPlayer.PlayerGui.LoginRewards:WaitForChild("Main")
+
 
 local args = {
     [1] = "spawn",
@@ -42,7 +42,7 @@ local args = {
 }
 
 game:GetService("Players"):WaitForChild("movlng_on"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
-
+game:GetService("Players")LocalPlayer.PlayerGui.LoginRewards:WaitForChild("Main")
 
 local function Teleport(A, B)
     local Deku
