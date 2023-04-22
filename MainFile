@@ -156,7 +156,7 @@ while Settings.AutoAttack do
     wait(5)
     pcall(
         function()
-	if done = true then
+	if done then
             local childrenInObject = game:GetService("Workspace")["Easter Assets"].EggDump:GetChildren() --returns a table
 	if #childrenInObject == 0 then
             local PlaceID = game.PlaceId
@@ -231,9 +231,9 @@ end
 -- If you'd like to use a script before server hopping (Like a Automatic Chest collector you can put the Teleport() after it collected everything.
 Teleport()
 end
-end)
 end
 end)
+end
 
 
 
@@ -372,4 +372,5 @@ spawn(function()
 while wait() do
 Save()
 end end)
+end)
 end)
