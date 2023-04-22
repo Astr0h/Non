@@ -31,6 +31,7 @@ Settings = game:GetService("HttpService"):JSONDecode(readfile("V.G Hub//" .. Nam
 local function Save()
     writefile("V.G Hub//" .. Name, game:GetService("HttpService"):JSONEncode(Settings))
 end
+game:GetService("Players")LocalPlayer.PlayerGui.LoginRewards:WaitForChild("Main") then
 
 local args = {
     [1] = "spawn",
@@ -116,8 +117,6 @@ spawn(function()
     wait()
     pcall(
         function()
-	wait(3)
-	game:GetService("Players")LocalPlayer.PlayerGui.LoginRewards:WaitForChild("Main")
 	wait(2)
              Teleport(Models, getNearestMeat().CFrame)
    wait(0.2)
