@@ -113,7 +113,7 @@ local Section4 = Tab2:CreateSection("Background")
 local Toggle1 = Section1:CreateToggle("Auto TP", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
 spawn(function()
-    wait()
+    wait(2)
     pcall(
         function()
 	game:GetService("Players")LocalPlayer.PlayerGui.LoginRewards:WaitForChild("Main")
