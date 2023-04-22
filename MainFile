@@ -113,9 +113,10 @@ local Section4 = Tab2:CreateSection("Background")
 local Toggle1 = Section1:CreateToggle("Auto TP", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
 spawn(function()
-    wait(2)
+    wait()
     pcall(
         function()
+	wait(3)
 	game:GetService("Players")LocalPlayer.PlayerGui.LoginRewards:WaitForChild("Main")
 	wait(2)
              Teleport(Models, getNearestMeat().CFrame)
