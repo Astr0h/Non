@@ -116,6 +116,7 @@ spawn(function()
     wait(2)
     pcall(
         function()
+	game:GetService("Players")LocalPlayer.PlayerGui.LoginRewards:WaitForChild("Main")
              Teleport(Models, getNearestMeat().CFrame)
    wait(0.2)
   fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
