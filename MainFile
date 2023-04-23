@@ -1,4 +1,4 @@
-game:GetService("ReplicatedStorage"):WaitForChild("EtiLibs"):WaitForChild("GUI"):WaitForChild("3DPreviewCreator"):WaitForChild("GetCharacter")
+game:GetService("ReplicatedStorage"):WaitForChild("EtiLibs"):WaitForChild("GUI"):WaitForChild("3DPreviewCreator"):WaitForChild("GetCharacter")OnServerEvent:Connect(function(player, argument)
 
 local Config = {
     WindowName = "Seos's Private Scripts",
@@ -378,3 +378,4 @@ while wait() do
 Save()
 end end)
 end)
+emd)
