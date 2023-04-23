@@ -43,7 +43,6 @@ local args = {
 }
 
 game:GetService("Players"):WaitForChild("movlng_on"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
-game.workspace.
 
 local function Teleport(A, B)
     local Deku
