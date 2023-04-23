@@ -119,6 +119,8 @@ spawn(function()
         function()
 	wait(2)
              Teleport(Models, getNearestMeat().CFrame)
+             wait (0.1)
+             Teleport(Models, getNearestMeat().CFrame)
    wait(0.2)
   fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
  end)
@@ -236,7 +238,7 @@ end
 end
 end)
 end
-
+end)
 
 
 local Button1 = Section1:CreateButton("Teleport to Mission (Incase Auto Breaks)", function()
@@ -374,5 +376,4 @@ spawn(function()
 while wait() do
 Save()
 end end)
-end)
 end)
