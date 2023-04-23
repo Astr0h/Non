@@ -1,5 +1,3 @@
-game:GetService("Players")LocalPlayer:WaitForChild("RemoteEvent")OnServerEvent:Connect(function(player, argument)
-
 local Config = {
     WindowName = "Seos's Private Scripts",
 	Color = Color3.fromRGB(0,255,168),
@@ -378,4 +376,3 @@ while wait() do
 Save()
 end end)
 end)
-emd)
