@@ -1,3 +1,5 @@
+game:GetService("ReplicatedStorage"):WaitForChild("EtiLibs"):WaitForChild("GUI"):WaitForChild("3DPreviewCreator"):WaitForChild("GetCharacter")
+
 local Config = {
     WindowName = "Seos's Private Scripts",
 	Color = Color3.fromRGB(0,255,168),
@@ -101,7 +103,6 @@ local Section1 = Tab1:CreateSection("Auto Farms")
 local Section3 = Tab2:CreateSection("Menu")
 local Section4 = Tab2:CreateSection("Background")
 
-game:GetService("Players").LocalPlayer:WaitForChild("RemoteEvent")
 
 
 for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
