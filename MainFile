@@ -1,4 +1,4 @@
-if not game:IsLoaded() then game.Loaded:Wait(5) end
+if not game:IsLoaded() then game.Loaded:Wait() end
 local Config = {
     WindowName = "Seos's Private Scripts",
 	Color = Color3.fromRGB(0,255,168),
@@ -32,7 +32,6 @@ Settings = game:GetService("HttpService"):JSONDecode(readfile("V.G Hub//" .. Nam
 local function Save()
     writefile("V.G Hub//" .. Name, game:GetService("HttpService"):JSONEncode(Settings))
 end
-wait (1)
 
 local args = {
     [1] = "spawn",
@@ -41,6 +40,8 @@ local args = {
         ["DinoType"] = "Kiiwin"
     }
 }
+
+game:GetService("Players")LocalPlayer:WaitForChild("RemoteEvent"):FireServer(unpack(args))
 
 local function Teleport(A, B)
     local Deku
