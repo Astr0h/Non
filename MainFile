@@ -40,7 +40,6 @@ local args = {
     }
 }
 
-game:GetService("Players"):WaitForChild("movlng_on"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
 
 local function Teleport(A, B)
     local Deku
@@ -102,7 +101,7 @@ local Section1 = Tab1:CreateSection("Auto Farms")
 local Section3 = Tab2:CreateSection("Menu")
 local Section4 = Tab2:CreateSection("Background")
 
-game:GetService("Players")["movlng_on"].PlayerGui.Character.Character.ViewportFrame.WorldModel:WaitForChild()
+game:GetService("Players").LocalPlayer:WaitForChild("RemoteEvent")
 
 
 for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
