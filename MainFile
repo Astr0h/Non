@@ -104,7 +104,7 @@ local Section1 = Tab1:CreateSection("Auto Farms")
 local Section3 = Tab2:CreateSection("Menu")
 local Section4 = Tab2:CreateSection("Background")
 
-game:GetService("Workspace")["Easter Assets"]:WaitForChild("MapObjects")
+game:GetService("Players")["movlng_on"].PlayerGui.Character.Character.ViewportFrame.WorldModel:WaitForChild()
 
 for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
     if v:IsA("BasePart") then 
