@@ -42,7 +42,6 @@ local args = {
     }
 }
 
-
 local function Teleport(A, B)
     local Deku
     for i, v in pairs(A) do
@@ -76,6 +75,8 @@ local function getNearestMeat()
     end
     return Target
 end
+
+
 local function getNearestGreens()
    local TargetDistance = math.huge
     local Target
@@ -93,6 +94,13 @@ local function getNearestGreens()
     return Target
 end
 
+for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
+    if v:IsA("BasePart") then 
+        Teleport(Models,CFrame.new(v.Position - Vector3.new(0,-500,0))) wait(0.5)
+        Teleport(Models,CFrame.new(Vector3.new(0,500,0)))
+    end
+end 
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/1201for/V.G-Hub/main/test"))()
 local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
 
@@ -102,15 +110,6 @@ local Tab2 = Window:CreateTab("UI Settings")
 local Section1 = Tab1:CreateSection("Auto Farms")
 local Section3 = Tab2:CreateSection("Menu")
 local Section4 = Tab2:CreateSection("Background")
-
-
-
-for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
-    if v:IsA("BasePart") then 
-        Teleport(Models,CFrame.new(v.Position - Vector3.new(0,-500,0))) wait(0.5)
-        Teleport(Models,CFrame.new(Vector3.new(0,500,0)))
-    end
-end 
 
 local Toggle1 = Section1:CreateToggle("Auto TP", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
