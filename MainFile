@@ -31,17 +31,6 @@ Settings = game:GetService("HttpService"):JSONDecode(readfile("V.G Hub//" .. Nam
 local function Save()
     writefile("V.G Hub//" .. Name, game:GetService("HttpService"):JSONEncode(Settings))
 end
-
-game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EggHuntMinigame")
-
-local args = {
-    [1] = "spawn",
-    [2] = {
-        ["Info"] = {},
-        ["DinoType"] = "Kiiwin"
-    }
-}
-
 game:GetService("Players"):WaitForChild("movlng_on"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
 
 local function Teleport(A, B)
@@ -105,6 +94,14 @@ local Section3 = Tab2:CreateSection("Menu")
 local Section4 = Tab2:CreateSection("Background")
 
 game:GetService("Players")["movlng_on"].PlayerGui.Character.Character.ViewportFrame.WorldModel:WaitForChild()
+
+local args = {
+    [1] = "spawn",
+    [2] = {
+        ["Info"] = {},
+        ["DinoType"] = "Kiiwin"
+    }
+}
 
 for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
     if v:IsA("BasePart") then 
