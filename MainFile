@@ -33,7 +33,7 @@ local function Save()
     writefile("V.G Hub//" .. Name, game:GetService("HttpService"):JSONEncode(Settings))
 end
 wait (1)
-game:GetService("Players")LocalPlayer.PlayerGui.LoginRewards.Main:WaitForChild("RewardContainer")
+
 local args = {
     [1] = "spawn",
     [2] = {
