@@ -33,16 +33,6 @@ local function Save()
     writefile("V.G Hub//" .. Name, game:GetService("HttpService"):JSONEncode(Settings))
 end
 
-local args = {
-    [1] = "spawn",
-    [2] = {
-        ["Info"] = {},
-        ["DinoType"] = "Kiiwin"
-    }
-}
-
-game:GetService("Players"):WaitForChild("movlng_on"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
-
 local function Teleport(A, B)
     local Deku
     for i, v in pairs(A) do
@@ -94,6 +84,16 @@ local function getNearestGreens()
     end
     return Target
 end
+
+local args = {
+    [1] = "spawn",
+    [2] = {
+        ["Info"] = {},
+        ["DinoType"] = "Kiiwin"
+    }
+}
+
+game:GetService("Players"):WaitForChild("movlng_on"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
 
 for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
     if v:IsA("BasePart") then 
