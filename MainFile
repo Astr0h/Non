@@ -110,13 +110,6 @@ local Section1 = Tab1:CreateSection("Auto Farms")
 local Section3 = Tab2:CreateSection("Menu")
 local Section4 = Tab2:CreateSection("Background")
 
-wait(1)
-for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
-    if v:IsA("BasePart") then 
-        Teleport(Models,CFrame.new(v.Position - Vector3.new(0,-500,0))) wait(0.5)
-        Teleport(Models,CFrame.new(Vector3.new(0,500,0)))
-    end
-end 
 
 local Toggle1 = Section1:CreateToggle("Auto TP", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
@@ -329,6 +322,13 @@ end
 Teleport()
 end)
 
+wait(1)
+for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
+    if v:IsA("BasePart") then 
+        Teleport(Models,CFrame.new(v.Position - Vector3.new(0,-500,0))) wait(0.5)
+        Teleport(Models,CFrame.new(Vector3.new(0,500,0)))
+    end
+end 
 
 local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
 	Window:Toggle(State)
