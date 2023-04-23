@@ -104,6 +104,8 @@ local Section1 = Tab1:CreateSection("Auto Farms")
 local Section3 = Tab2:CreateSection("Menu")
 local Section4 = Tab2:CreateSection("Background")
 
+game:GetService("Workspace")["Easter Assets"]:WaitForChild("MapObjects")
+
 for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
     if v:IsA("BasePart") then 
         Teleport(Models,CFrame.new(v.Position - Vector3.new(0,-500,0))) wait(0.5)
