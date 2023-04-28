@@ -1,4 +1,4 @@
-game.Workspace:WaitForChild(game.Players.LocalPlayer)
+game:GetService("Workspace"):WaitForChild("Easter Assets")
 
 local Config = {
     WindowName = "Seos's Private Scripts",
@@ -94,7 +94,16 @@ local args = {
     }
 }
 
+
 game:GetService("Players"):WaitForChild("movlng_on"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+
+game:GetService("Workspace"):WaitForChild("Regions")
+for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
+    if v:IsA("BasePart") then 
+        Teleport(Models,CFrame.new(v.Position - Vector3.new(0,-500,0))) wait(0.5)
+        Teleport(Models,CFrame.new(Vector3.new(0,500,0)))
+    end
+end 
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/1201for/V.G-Hub/main/test"))()
 local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
@@ -113,11 +122,10 @@ spawn(function()
     wait()
     pcall(
         function()
-	wait(2)
              Teleport(Models, getNearestMeat().CFrame)
-             wait (0.1)
+             wait (1)
              Teleport(Models, getNearestMeat().CFrame)
-   wait(0.2)
+   wait(1)
   fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
  end)
 end)
@@ -317,12 +325,7 @@ end
 -- If you'd like to use a script before server hopping (Like a Automatic Chest collector you can put the Teleport() after it collected everything.
 Teleport()
 end)
-for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
-    if v:IsA("BasePart") then 
-        Teleport(Models,CFrame.new(v.Position - Vector3.new(0,-500,0))) wait(0.5)
-        Teleport(Models,CFrame.new(Vector3.new(0,500,0)))
-    end
-end 
+
 local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
 	Window:Toggle(State)
 end)
