@@ -105,6 +105,7 @@ for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
     end
 end 
 
+wait(1)
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/1201for/V.G-Hub/main/test"))()
 local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
 
@@ -125,10 +126,7 @@ spawn(function()
              Teleport(Models, getNearestMeat().CFrame)
              wait (1)
              Teleport(Models, getNearestMeat().CFrame)
-	     wait (1)
-             Teleport(Models, getNearestMeat().CFrame)
-	     wait (1)
-             Teleport(Models, getNearestMeat().CFrame)
+	   
    wait(1)
   fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
  end)
