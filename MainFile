@@ -94,8 +94,8 @@ local args = {
     }
 }
 
-
-game:GetService("Players"):WaitForChild("movlng_on"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+local curp = game.Players.LocalPlayer
+curp:WaitForChild("RemoteEvent"):FireServer(unpack(args))
 
 game:GetService("Workspace"):WaitForChild("Regions")
 for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
