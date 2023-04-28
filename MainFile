@@ -1,4 +1,3 @@
-if not game:IsLoaded() then game.Loaded:Wait()
 local Config = {
     WindowName = "Seos's Private Scripts",
 	Color = Color3.fromRGB(0,255,168),
