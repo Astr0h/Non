@@ -1,4 +1,4 @@
-game.Workspace:WaitForChild(game.Players.LocalPlayer.Name)
+game.Workspace:WaitForChild(game.Players.LocalPlayer)
 
 local Config = {
     WindowName = "Seos's Private Scripts",
