@@ -186,7 +186,7 @@ local Toggle1 = Section1:CreateToggle("Auto find Famine/Drought", Settings.AutoA
 Settings.AutoAttack = State
 spawn(function()
 while Settings.AutoAttack do
-    wait()
+    wait(10)
     pcall(
         function()
             local good = {"Famine","Drought"}
