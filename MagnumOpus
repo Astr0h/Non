@@ -155,7 +155,6 @@ spawn(function()
     wait()
     pcall(
         function()
-	repeat()
              Teleport(Models, getNearestExplorer().CFrame)
              Teleport(Models, getNearestExplorer().CFrame)	     
              Teleport(Models, getNearestGalaxyExplorer().CFrame)
@@ -283,4 +282,3 @@ spawn(function()
 while wait() do
 Save()
 end end)
-
