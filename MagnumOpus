@@ -193,8 +193,7 @@ while Settings.AutoAttack do
     pcall(
         function()
              Teleport(Models, getNearestExplorer().CFrame)
-             wait (1)
-             Teleport(Models, getNearestExplorer().CFrame)
+	      Teleport(Models, getNearestExplorer().CFrame)
 game:GetService("Players").LocalPlayer.RemoteEvent:FireServer("drink",workspace.Water)
   
         end)
@@ -210,7 +209,6 @@ while Settings.AutoAttack do
     pcall(
         function()
              Teleport(Models, getNearestGalaxyExplorer().CFrame)
-             wait (1)
              Teleport(Models, getNearestGalaxyExplorer().CFrame)
 	   game:GetService("Players").LocalPlayer.RemoteEvent:FireServer("drink",workspace.Water)
         end)
@@ -226,7 +224,6 @@ while Settings.AutoAttack do
     pcall(
         function()
              Teleport(Models, getNearestMecha().CFrame)
-             wait (1)
              Teleport(Models, getNearestMecha().CFrame)
 	   game:GetService("Players").LocalPlayer.RemoteEvent:FireServer("drink",workspace.Water)
   end)
@@ -242,7 +239,6 @@ while Settings.AutoAttack do
     pcall(
         function()
              Teleport(Models, getNearestMonster().CFrame)
-             wait (1)
              Teleport(Models, getNearestMonster().CFrame)
 	   game:GetService("Players").LocalPlayer.RemoteEvent:FireServer("drink",workspace.Water)
   end)
