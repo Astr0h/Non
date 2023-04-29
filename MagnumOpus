@@ -191,9 +191,9 @@ while Settings.AutoAttack do
     wait()
     pcall(
         function()
-            local good = {"Famine","Drought","Spring","Autumn"}
+            local bad = {"Winter", "Summer"}
 	    local weather = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Season.Text
-    if weather ~= good then
+    if weather == bad then
         warn ("No Famine / Drought")
       wait(5)
       local PlaceID = game.PlaceId
