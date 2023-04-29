@@ -1,19 +1,19 @@
 game:GetService("Workspace"):WaitForChild("Easter Assets")
 
 local Config = {
-    WindowName = "Seos's Private Scripts",
-	Color = Color3.fromRGB(0,255,168),
+    WindowName = "Magnum Opus Premium - By Seos#2001",
+	Color = Color3.fromRGB(244,180,80),
 	Keybind = Enum.KeyCode.RightControl
 }
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
 
-local Name = "Creatures of Sonarina.json"
+local Name = "Magnum Opum.json"
 
 Des = {}
 if makefolder then
-    makefolder("V.G Hub")
+    makefolder("MagnumLoader")
 end
 
 local Settings
@@ -21,27 +21,27 @@ local Settings
 if
     not pcall(
         function()
-            readfile("V.G Hub//" .. Name)
+            readfile("MagnumLoader//" .. Name)
         end
     )
  then
-    writefile("V.G Hub//" .. Name, game:GetService("HttpService"):JSONEncode(Des))
+    writefile("MagnumLoader//" .. Name, game:GetService("HttpService"):JSONEncode(Des))
 end
 
-Settings = game:GetService("HttpService"):JSONDecode(readfile("V.G Hub//" .. Name))
+Settings = game:GetService("HttpService"):JSONDecode(readfile("MagnumLoader//" .. Name))
 
 local function Save()
-    writefile("V.G Hub//" .. Name, game:GetService("HttpService"):JSONEncode(Settings))
+    writefile("MagnumLoader//" .. Name, game:GetService("HttpService"):JSONEncode(Settings))
 end
 
 local function Teleport(A, B)
-    local Deku
+    local TPBypass
     for i, v in pairs(A) do
         if v.Name == "MotionTracker" then
-            Deku = v
+            TPBypass = v
         end
     end
-    for i, v in pairs(debug.getupvalues(require(Deku))) do
+    for i, v in pairs(debug.getupvalues(require(TPBypass))) do
         if type(v) == "function" then
             if getinfo(v).name == "TeleportTo" then
                 setupvalue(v, 3, B)
@@ -106,7 +106,7 @@ for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
 end 
 
 wait(1)
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/1201for/V.G-Hub/main/test"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Astr0h/Non/main/MainFrame"))()
 local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
 
 local Tab1 = Window:CreateTab("Creatures of Sonaria")
@@ -344,24 +344,12 @@ end)
 Colorpicker3:UpdateColor(Config.Color)
 
 -- credits to jan for patterns
-local Dropdown3 = Section4:CreateDropdown("Image", {"Default","Hearts","Abstract","Hexagon","Circles","Lace With Flowers","Floral"}, function(Name)
+local Dropdown3 = Section4:CreateDropdown("Image", {"Default"}, function(Name)
 	if Name == "Default" then
-		Window:SetBackground("2151741365")
-	elseif Name == "Hearts" then
-		Window:SetBackground("6073763717")
-	elseif Name == "Abstract" then
-		Window:SetBackground("6073743871")
-	elseif Name == "Hexagon" then
-		Window:SetBackground("6073628839")
-	elseif Name == "Circles" then
-		Window:SetBackground("6071579801")
-	elseif Name == "Lace With Flowers" then
-		Window:SetBackground("6071575925")
-	elseif Name == "Floral" then
-		Window:SetBackground("5553946656")
+		Window:SetBackground("13281813892")
 	end
 end)
-Dropdown3:SetOption("Abstract")
+Dropdown3:SetOption("Default")
 
 local Colorpicker4 = Section4:CreateColorpicker("Color", function(Color)
 	Window:SetBackgroundColor(Color)
