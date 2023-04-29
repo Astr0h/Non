@@ -67,11 +67,11 @@ local function getNearestExplorer()
 end
 
 
-local function getNearestMutation()
+local function getNearestGalaxyExplorer()
     local TargetDistance = math.huge
     local Target
    for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-        if v.Name == "MutationCapsule" then 
+        if v.Name == "GalaxyExplorerCapsule" then 
             local Mag =
                 (game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].Position -
                 v.Position).Magnitude
@@ -84,11 +84,28 @@ local function getNearestMutation()
     return Target
 end
 
-local function getNearestPhotovore()
+local function getNearestMecha()
     local TargetDistance = math.huge
     local Target
    for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-        if v.Name == "PhotovoreCapsule" then 
+        if v.Name == "MechaCapsule" then 
+            local Mag =
+                (game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].Position -
+                v.Position).Magnitude
+            if Mag < TargetDistance then
+                TargetDistance = Mag
+                Target = v
+            end
+        end
+    end
+    return Target
+end
+
+local function getNearestMonster()
+    local TargetDistance = math.huge
+    local Target
+   for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v.Name == "MonsterCapsule" then 
             local Mag =
                 (game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].Position -
                 v.Position).Magnitude
@@ -143,9 +160,46 @@ spawn(function()
              wait (1)
              Teleport(Models, getNearestExplorer().CFrame)
 	   
-   wait(1)
-  fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
- end)
+  end)
+end)
+end)
+
+local Button1 = Section1:CreateButton("Get Galaxy Explorer Capsule", function()
+spawn(function()
+    wait()
+    pcall(
+        function()
+             Teleport(Models, getNearestGalaxyExplorer().CFrame)
+             wait (1)
+             Teleport(Models, getNearestGalaxyExplorer().CFrame)
+	   
+  end)
+end)
+end)
+
+local Button1 = Section1:CreateButton("Get Mecha Capsule", function()
+spawn(function()
+    wait()
+    pcall(
+        function()
+             Teleport(Models, getNearestMecha().CFrame)
+             wait (1)
+             Teleport(Models, getNearestMecha().CFrame)
+	   
+  end)
+end)
+end)
+
+local Button1 = Section1:CreateButton("Get Monster Capsule", function()
+spawn(function()
+    wait()
+    pcall(
+        function()
+             Teleport(Models, getNearestMonster().CFrame)
+             wait (1)
+             Teleport(Models, getNearestMonster().CFrame)
+	   
+  end)
 end)
 end)
 
@@ -270,7 +324,7 @@ end)]]--
   fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
  end)]]--
 
-local Button1 = Section1:CreateButton("Server Hop (Incase Auto Breaks)", function()
+local Button1 = Section1:CreateButton("Server Hop", function()
 local PlaceID = game.PlaceId
 local AllIDs = {}
 local foundAnything = ""
