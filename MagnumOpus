@@ -145,7 +145,7 @@ local Section4 = Tab2:CreateSection("Background")
 Section1:CreateLabel("Welcome, "..curpname..",")
 Section1:CreateLabel("Thank you for purchasing")
 
-local Button1 = Section1:CreateButton("Get Explorer Capsule", function()
+local Button1 = Section1:CreateButton("Check Map", function()
 spawn(function()
     wait()
     pcall(
