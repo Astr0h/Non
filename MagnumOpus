@@ -171,8 +171,10 @@ while Settings.AutoAttack do
              Teleport(Models, getNearestExplorer().CFrame)
              wait (1)
              Teleport(Models, getNearestExplorer().CFrame)
-	   
-  end)
+
+  
+        end)
+end
 end)
 end)
 
@@ -187,7 +189,8 @@ while Settings.AutoAttack do
              wait (1)
              Teleport(Models, getNearestGalaxyExplorer().CFrame)
 	   
-  end)
+        end)
+end
 end)
 end)
 
@@ -203,6 +206,8 @@ while Settings.AutoAttack do
              Teleport(Models, getNearestMecha().CFrame)
 	   
   end)
+end
+
 end)
 end)
 
@@ -218,6 +223,7 @@ while Settings.AutoAttack do
              Teleport(Models, getNearestMonster().CFrame)
 	   
   end)
+end
 end)
 end)
 
