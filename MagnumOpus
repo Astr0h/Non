@@ -191,19 +191,19 @@ while Settings.AutoAttack do
     wait()
     pcall(
         function()
-            local bad = {"Winter", "Summer"}
-	    local weather = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Season.Text
-    if weather == bad then
-        warn ("No Famine / Drought")
       wait(5)
-      local PlaceID = game.PlaceId
+local PlaceID = game.PlaceId
 local AllIDs = {}
 local foundAnything = ""
 local actualHour = os.date("!*t").hour
 local Deleted = false
 local File = pcall(function()
+    local bad = {"Winter", "Summer"}
+	    local weather = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Season.Text
+    if weather == bad then
+        warn ("No Famine / Drought")
     AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
-end)
+end
 if not File then
     table.insert(AllIDs, actualHour)
     writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
@@ -253,9 +253,7 @@ function TPReturner()
         end
     end
 end
-
-
-end
+end)
 end)
 end
 end)
