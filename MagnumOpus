@@ -49,11 +49,11 @@ local function Teleport(A, B)
     return A, B, nil, nil
 end
 Models = getloadedmodules()
-local function getNearestMeat()
+local function getNearestExplorer()
     local TargetDistance = math.huge
     local Target
    for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-        if v.Name == "Explorer Capsule" then 
+        if v.Name == "ExplorerCapsule" then 
             local Mag =
                 (game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].Position -
                 v.Position).Magnitude
@@ -67,14 +67,31 @@ local function getNearestMeat()
 end
 
 
-local function getNearestGreens()
-   local TargetDistance = math.huge
+local function getNearestMutation()
+    local TargetDistance = math.huge
     local Target
-   for i,v in pairs(game:GetService("Workspace")["Easter Assets"].EggDump:GetDescendants()) do
-        if v.ClassName == "MeshPart" then 
+   for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v.Name == "MutationCapsule" then 
             local Mag =
                 (game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].Position -
-                v:FindFirstChild("Top").WorldPosition).Magnitude
+                v.Position).Magnitude
+            if Mag < TargetDistance then
+                TargetDistance = Mag
+                Target = v
+            end
+        end
+    end
+    return Target
+end
+
+local function getNearestPhotovore()
+    local TargetDistance = math.huge
+    local Target
+   for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v.Name == "PhotovoreCapsule" then 
+            local Mag =
+                (game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].Position -
+                v.Position).Magnitude
             if Mag < TargetDistance then
                 TargetDistance = Mag
                 Target = v
@@ -117,15 +134,14 @@ local Section4 = Tab2:CreateSection("Background")
 Section1:CreateLabel("Welcome,"..curpname..",")
 Section1:CreateLabel("Thank you for purchasing")
 
-local Toggle1 = Section1:CreateToggle("Auto TP", Settings.AutoAttack, function(State)
-Settings.AutoAttack = State
+local Button1 = Section1:CreateButton("Get Explorer Capsule", function()
 spawn(function()
     wait()
     pcall(
         function()
-             Teleport(Models, getNearestMeat().CFrame)
+             Teleport(Models, getNearestExplorer().CFrame)
              wait (1)
-             Teleport(Models, getNearestMeat().CFrame)
+             Teleport(Models, getNearestExplorer().CFrame)
 	   
    wait(1)
   fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
