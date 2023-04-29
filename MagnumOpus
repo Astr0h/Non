@@ -164,6 +164,7 @@ end)
 local Toggle1 = Section1:CreateToggle("Get Explorer Capsule", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
 spawn(function()
+while Settings.AutoAttack do
     wait()
     pcall(
         function()
@@ -178,6 +179,7 @@ end)
 local Toggle1 = Section1:CreateToggle("Get Galaxy Explorer", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
 spawn(function()
+while Settings.AutoAttack do
     wait()
     pcall(
         function()
@@ -192,6 +194,7 @@ end)
 local Toggle1 = Section1:CreateToggle("Get Mecha Capsule", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
 spawn(function()
+while Settings.AutoAttack do
     wait()
     pcall(
         function()
@@ -206,6 +209,7 @@ end)
 local Toggle1 = Section1:CreateToggle("Get Monster Capsule", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
 spawn(function()
+while Settings.AutoAttack do
     wait()
     pcall(
         function()
