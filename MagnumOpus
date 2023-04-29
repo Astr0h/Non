@@ -133,9 +133,7 @@ local Section4 = Tab2:CreateSection("Background")
 
 Section1:CreateLabel("Welcome, "..curpname..",")
 Section1:CreateLabel("Thank you for purchasing")
-
-local Toggle1 = Section1:CreateToggle("AutoToken", Settings.AutoAttack, function(State)
-Settings.AutoAttack = State
+local Button1 = Section1:CreateButton("Check Map", function()
 spawn(function()
     wait()
     pcall(
@@ -147,8 +145,17 @@ for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
         Teleport(Models,CFrame.new(Vector3.new(0,500,0)))
     end
 end 
+end)
+end)
+end)
 
-
+local Toggle1 = Section1:CreateToggle("AutoToken", Settings.AutoAttack, function(State)
+Settings.AutoAttack = State
+spawn(function()
+    wait()
+    pcall(
+        function()
+	repeat()
              Teleport(Models, getNearestExplorer().CFrame)
              Teleport(Models, getNearestExplorer().CFrame)	     
              Teleport(Models, getNearestGalaxyExplorer().CFrame)
@@ -157,12 +164,10 @@ end
              Teleport(Models, getNearestMecha().CFrame)
 	     Teleport(Models, getNearestMonster().CFrame)
              Teleport(Models, getNearestMonster().CFrame)
-
 end)
 end)
 end)
 
-local done = false
 
 
 local Button1 = Section1:CreateButton("Server Hop", function()
