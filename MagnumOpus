@@ -125,7 +125,7 @@ wait(1)
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Astr0h/Non/main/MainFrame"))()
 local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
 
-local Tab1 = Window:CreateTab("Easter Event Autofarm")
+local Tab1 = Window:CreateTab("Token Autofarm")
 local Tab2 = Window:CreateTab("UI Settings")
 
 local Section1 = Tab1:CreateSection("")
@@ -136,7 +136,7 @@ Section1:CreateLabel("Welcome, "..curpname..",")
 Section1:CreateLabel("Thank you for purchasing")
 Section1:CreateLabel("Press F9 to view your current Tokens")
 
-local cap1 = game:GetService("Players").LocalPlayer.Data.Items.SessionGachaToken
+local cap1 = game:GetService("Players").LocalPlayer.Data.Items.ExplorerGachaToken
 cap1.Changed:Connect(function(newValue)
 warn ("Photovore Token received! Current amount:"..(newValue).."!")
 end)
@@ -189,9 +189,9 @@ while Settings.AutoAttack do
     wait()
     pcall(
         function()
-       local weather = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Weather
-    if weather.Value ~= "Famine"
-    and weather.Value ~= "Drought" then
+            local good = {"Famine","Drought"}
+    local weather = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Weather.Text
+    if weather ~= good then
         local PlaceID = game.PlaceId
 local AllIDs = {}
 local foundAnything = ""
