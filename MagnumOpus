@@ -184,7 +184,7 @@ end
 end)
 end)
 
-local Button1 = Section1:CreateButton("Server Hop (Incase Auto Breaks)", function()
+local Button1 = Section1:CreateButton("Server Hop)", function()
 local PlaceID = game.PlaceId
 local AllIDs = {}
 local foundAnything = ""
