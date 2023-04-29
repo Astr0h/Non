@@ -1,5 +1,3 @@
-game:GetService("Workspace"):WaitForChild("Easter Assets")
-
 local Config = {
     WindowName = "Magnum Opus Premium - By Seos#2001",
 	Color = Color3.fromRGB(244,180,80),
@@ -54,8 +52,8 @@ Models = getloadedmodules()
 local function getNearestMeat()
     local TargetDistance = math.huge
     local Target
-   for i,v in pairs(game:GetService("Workspace")["Easter Assets"].EggBasket:GetDescendants()) do
-        if v.Name == "Meshes/EggBasket_Basket" then 
+   for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v.Name == "Explorer Capsule" then 
             local Mag =
                 (game:GetService("Workspace").Terrain[game.Players.LocalPlayer.Name].Position -
                 v.Position).Magnitude
@@ -137,7 +135,7 @@ end)
 
 local done = false
 
-local Toggle1 = Section1:CreateToggle("AutoEggs", Settings.AutoAttack, function(State)
+--[[local Toggle1 = Section1:CreateToggle("AutoEggs", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
 spawn(function()
 while Settings.AutoAttack do
@@ -159,7 +157,7 @@ game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EggHun
 end)
 end
 end)
-end)
+end)]]--
 
 local Toggle1 = Section1:CreateToggle("Auto Server Hop", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
