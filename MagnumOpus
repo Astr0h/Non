@@ -159,7 +159,7 @@ end
 end)
 end)]]--
 
-local Toggle1 = Section1:CreateToggle("Auto Server Hop", Settings.AutoAttack, function(State)
+--[[local Toggle1 = Section1:CreateToggle("Auto Server Hop", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
 spawn(function()
 while Settings.AutoAttack do
@@ -244,7 +244,7 @@ end
 end
 end)
 end
-end)
+end)]]--
 
 
 local Button1 = Section1:CreateButton("Teleport to Mission (Incase Auto Breaks)", function()
