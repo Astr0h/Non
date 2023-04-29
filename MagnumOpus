@@ -335,11 +335,14 @@ end
 Teleport()
 end)
 
+	local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
 	Window:Toggle(State)
 end)
 Toggle3:CreateKeybind(tostring(Config.Keybind):gsub("Enum.KeyCode.", ""), function(Key)
 	Config.Keybind = Enum.KeyCode[Key]
 end)
+end)
+
 Toggle3:SetState(true)
 Section3:CreateLabel("Credits Seos#2001")
 Section3:CreateLabel("Credits AlexR32#3232 Ui")
@@ -375,4 +378,3 @@ spawn(function()
 while wait() do
 Save()
 end end)
-
