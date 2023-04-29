@@ -48,6 +48,7 @@ local function Teleport(A, B)
     end
     return A, B, nil, nil
 end
+
 Models = getloadedmodules()
 local function getNearestExplorer()
     local TargetDistance = math.huge
@@ -168,7 +169,7 @@ local Toggle1 = Section1:CreateToggle("Auto Map", Settings.AutoAttack, function(
 Settings.AutoAttack = State
 spawn(function()
 while Settings.AutoAttack do
-    wait(15)
+    wait(60)
     pcall(
         function()
 game:GetService("Workspace"):WaitForChild("Regions")
@@ -189,7 +190,7 @@ local Toggle1 = Section1:CreateToggle("Get Explorer Capsule", Settings.AutoAttac
 Settings.AutoAttack = State
 spawn(function()
 while Settings.AutoAttack do
-    wait()
+    wait(1)
     pcall(
         function()
              Teleport(Models, getNearestExplorer().CFrame)
@@ -205,7 +206,7 @@ local Toggle1 = Section1:CreateToggle("Get Galaxy Explorer", Settings.AutoAttack
 Settings.AutoAttack = State
 spawn(function()
 while Settings.AutoAttack do
-    wait()
+    wait(1)
     pcall(
         function()
              Teleport(Models, getNearestGalaxyExplorer().CFrame)
@@ -220,7 +221,7 @@ local Toggle1 = Section1:CreateToggle("Get Mecha Capsule", Settings.AutoAttack, 
 Settings.AutoAttack = State
 spawn(function()
 while Settings.AutoAttack do
-    wait()
+    wait(1)
     pcall(
         function()
              Teleport(Models, getNearestMecha().CFrame)
@@ -235,7 +236,7 @@ local Toggle1 = Section1:CreateToggle("Get Monster Capsule", Settings.AutoAttack
 Settings.AutoAttack = State
 spawn(function()
 while Settings.AutoAttack do
-    wait()
+    wait(1)
     pcall(
         function()
              Teleport(Models, getNearestMonster().CFrame)
@@ -245,17 +246,6 @@ while Settings.AutoAttack do
 end
 end)
 end)
-
-local args = {
-    [1] = "spawn",
-    [2] = {
-        ["Info"] = {},
-        ["DinoType"] = "Kiiwin"
-    }
-}
-
-
-game:GetService("Players").LocalPlayer:WaitForChild("RemoteEvent"):FireServer(unpack(args))
 
 local Button1 = Section1:CreateButton("Server Hop", function()
 local PlaceID = game.PlaceId
