@@ -135,7 +135,7 @@ local Section4 = Tab2:CreateSection("Background")
 Section1:CreateLabel("Welcome, "..curpname..",")
 Section1:CreateLabel("Thank you for purchasing")
 Section1:CreateLabel("Press F9 to view your current Tokens")
-Section1:CreateLabel("Current Weather: "..local weather = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Weather.Text..".")
+Section1:CreateLabel("Current Weather: "..game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Weather.Text..".")
 
 local cap1 = game:GetService("Players").LocalPlayer.Data.Items.ExplorerGachaToken
 cap1.Changed:Connect(function(newValue)
@@ -191,6 +191,7 @@ while Settings.AutoAttack do
     pcall(
         function()
             local good = {"Famine","Drought"}
+	    local weather = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Weather.Text
     if weather ~= good then
         warn ("No Famine / Drought")
       wait(5)
