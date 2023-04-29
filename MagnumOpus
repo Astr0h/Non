@@ -136,7 +136,7 @@ Section1:CreateLabel("Welcome, "..curpname..",")
 Section1:CreateLabel("Thank you for purchasing")
 Section1:CreateLabel("Press F9 to view your current Tokens")
 
-local cap1 = game:GetService("Players").LocalPlayer.Data.Items.SessionGachaToken
+local cap1 = game:GetService("Players").LocalPlayer.Data.Items.ExplorerGachaToken
 cap1.Changed:Connect(function(newValue)
 print ("Photovore Token received! Current amount:"..(newValue).."!")
 end)
