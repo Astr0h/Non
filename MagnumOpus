@@ -146,7 +146,7 @@ local args = {
 }
 
 
-game:GetService("Players")LocalPlayer:WaitForChild("RemoteEvent"):FireServer(unpack(args))
+game:GetService("Players").LocalPlayer:WaitForChild("RemoteEvent"):FireServer(unpack(args))
 
 local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
 local cap1 = game:GetService("Players").LocalPlayer.Data.Items.ExplorerGachaToken
