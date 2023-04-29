@@ -426,7 +426,7 @@ Colorpicker3:UpdateColor(Config.Color)
 -- credits to jan for patterns
 local Dropdown3 = Section4:CreateDropdown("Image", {"Default"}, function(Name)
 	if Name == "Default" then
-		Window:SetBackground("13281813892")
+		Window:SetBackground("13281813863")
 	end
 end)
 Dropdown3:SetOption("Default")
