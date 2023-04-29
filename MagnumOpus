@@ -247,12 +247,12 @@ end
 end)]]--
 
 
-local Button1 = Section1:CreateButton("Teleport to Mission (Incase Auto Breaks)", function()
+--[[local Button1 = Section1:CreateButton("Teleport to Mission (Incase Auto Breaks)", function()
 
    Teleport(Models, getNearestMeat().CFrame)
    wait(0.2)
   fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
- end)
+ end)]]--
 
 local Button1 = Section1:CreateButton("Server Hop (Incase Auto Breaks)", function()
 local PlaceID = game.PlaceId
