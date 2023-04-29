@@ -135,7 +135,9 @@ local Section4 = Tab2:CreateSection("Background")
 Section1:CreateLabel("Welcome, "..curpname..",")
 Section1:CreateLabel("Thank you for purchasing")
 Section1:CreateLabel("Press F9 to view your current Tokens")
+Section1:CreateLabel("Current Weather: "..game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("HUD").Minimap.Weather.Text..".")
 
+local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
 local cap1 = game:GetService("Players").LocalPlayer.Data.Items.ExplorerGachaToken
 cap1.Changed:Connect(function(newValue)
 warn ("Photovore Token received! Current amount:"..(newValue).."!")
@@ -345,9 +347,6 @@ Teleport()
 
 	Window:Toggle(State)
 end)
-
-Section1:CreateLabel("Current Weather: "..game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Weather.Text..".")
-local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
 Toggle3:CreateKeybind(tostring(Config.Keybind):gsub("Enum.KeyCode.", ""), function(Key)
 	Config.Keybind = Enum.KeyCode[Key]
 end)
