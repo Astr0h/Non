@@ -125,7 +125,7 @@ wait(1)
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Astr0h/Non/main/MainFrame"))()
 local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
 
-local Tab1 = Window:CreateTab("Token Autofarm")
+local Tab1 = Window:CreateTab("Easter Event Autofarm")
 local Tab2 = Window:CreateTab("UI Settings")
 
 local Section1 = Tab1:CreateSection("")
@@ -136,31 +136,31 @@ Section1:CreateLabel("Welcome, "..curpname..",")
 Section1:CreateLabel("Thank you for purchasing")
 Section1:CreateLabel("Press F9 to view your current Tokens")
 
-local cap1 = game:GetService("Players").LocalPlayer.Data.Items.ExplorerGachaToken
+local cap1 = game:GetService("Players").LocalPlayer.Data.Items.SessionGachaToken
 cap1.Changed:Connect(function(newValue)
-print ("Photovore Token received! Current amount:"..(newValue).."!")
+warn ("Photovore Token received! Current amount:"..(newValue).."!")
 end)
 
 local cap2 = game:GetService("Players").LocalPlayer.Data.Items.GalaxyExplorerGachaToken
 cap2.Changed:Connect(function(newValue)
-print ("Galaxy Token received! Current amount:"..(newValue).."!")
+warn ("Galaxy Token received! Current amount:"..(newValue).."!")
 end)
 
 local cap3 = game:GetService("Players").LocalPlayer.Data.Items.MutateExplorerGachaToken
 cap3.Changed:Connect(function(newValue)
-print ("Mecha Token received! Current amount:"..(newValue).."!")
+warn ("Mecha Token received! Current amount:"..(newValue).."!")
 end)
 
 local cap4 = game:GetService("Players").LocalPlayer.Data.Items.MonsterExplorerGachaToken
 cap4.Changed:Connect(function(newValue)
-print ("Monster Token received! Current amount: "..(newValue).."!")
+warn ("Monster Token received! Current amount: "..(newValue).."!")
 end)
 
-print ("Welcome to Magnum Opum")
-print ("Photovore Tokens: "..(cap1).Value.."!")
-print ("Galaxy Tokens: "..(cap2).Value.."!")
-print ("Mecha Tokens: "..(cap3).Value.."!")
-print ("Monster Tokens: "..(cap4).Value.."!")
+warn ("Welcome to Magnum Opum")
+warn ("Photovore Tokens: "..(cap1).Value.."!")
+warn ("Galaxy Tokens: "..(cap2).Value.."!")
+warn ("Mecha Tokens: "..(cap3).Value.."!")
+warn ("Monster Tokens: "..(cap4).Value.."!")
 
 local Toggle1 = Section1:CreateToggle("Auto Map", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
