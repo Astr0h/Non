@@ -184,25 +184,15 @@ end
 end)
 end)
 
-local Toggle1 = Section1:CreateToggle("Auto find Famine/Drought", Settings.AutoAttack, function(State)
-Settings.AutoAttack = State
-spawn(function()
-while Settings.AutoAttack do
-    wait()
-    pcall(
-        function()
-      wait(5)
+local Button1 = Section1:CreateButton("Server Hop (Incase Auto Breaks)", function()
 local PlaceID = game.PlaceId
 local AllIDs = {}
 local foundAnything = ""
 local actualHour = os.date("!*t").hour
 local Deleted = false
 local File = pcall(function()
-    local bad = {"Winter", "Summer"}
-	    local weather = game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Season.Text
-    if weather == bad then
-        warn ("No Famine / Drought")
     AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+end)
 if not File then
     table.insert(AllIDs, actualHour)
     writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
@@ -252,14 +242,6 @@ function TPReturner()
         end
     end
 end
-end
-end)
-end)
-end
-end)
-end)
-
-
 
 local Toggle1 = Section1:CreateToggle("Get Explorer Capsule", Settings.AutoAttack, function(State)
 Settings.AutoAttack = State
