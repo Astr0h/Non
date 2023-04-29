@@ -118,7 +118,7 @@ local function getNearestMonster()
     return Target
 end
 
-local args = {
+--[[local args = {
     [1] = "spawn",
     [2] = {
         ["Info"] = {},
@@ -127,15 +127,9 @@ local args = {
 }
 
 local curp = game.Players.LocalPlayer
-curp:WaitForChild("RemoteEvent"):FireServer(unpack(args))
+curp:WaitForChild("RemoteEvent"):FireServer(unpack(args))]]--
 local curpname = game.Players.LocalPlayer.Name
-game:GetService("Workspace"):WaitForChild("Regions")
-for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
-    if v:IsA("BasePart") then 
-        Teleport(Models,CFrame.new(v.Position - Vector3.new(0,-500,0))) wait(0.5)
-        Teleport(Models,CFrame.new(Vector3.new(0,500,0)))
-    end
-end 
+
 
 wait(1)
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Astr0h/Non/main/MainFrame"))()
@@ -148,8 +142,24 @@ local Section1 = Tab1:CreateSection("")
 local Section3 = Tab2:CreateSection("Menu")
 local Section4 = Tab2:CreateSection("Background")
 
-Section1:CreateLabel("Welcome,"..curpname..",")
+Section1:CreateLabel("Welcome, "..curpname..",")
 Section1:CreateLabel("Thank you for purchasing")
+
+local Button1 = Section1:CreateButton("Get Explorer Capsule", function()
+spawn(function()
+    wait()
+    pcall(
+        function()
+game:GetService("Workspace"):WaitForChild("Regions")
+for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
+    if v:IsA("BasePart") then 
+        Teleport(Models,CFrame.new(v.Position - Vector3.new(0,-500,0))) wait(0.5)
+        Teleport(Models,CFrame.new(Vector3.new(0,500,0)))
+    end
+end 
+end)
+end)
+end)
 
 local Button1 = Section1:CreateButton("Get Explorer Capsule", function()
 spawn(function()
