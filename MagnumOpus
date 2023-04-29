@@ -118,16 +118,6 @@ local function getNearestMonster()
     return Target
 end
 
---[[local args = {
-    [1] = "spawn",
-    [2] = {
-        ["Info"] = {},
-        ["DinoType"] = "Kiiwin"
-    }
-}
-
-local curp = game.Players.LocalPlayer
-curp:WaitForChild("RemoteEvent"):FireServer(unpack(args))]]--
 local curpname = game.Players.LocalPlayer.Name
 
 
@@ -135,7 +125,7 @@ wait(1)
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Astr0h/Non/main/MainFrame"))()
 local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
 
-local Tab1 = Window:CreateTab("Easter Event Autofarm")
+local Tab1 = Window:CreateTab("Token Autofarm")
 local Tab2 = Window:CreateTab("UI Settings")
 
 local Section1 = Tab1:CreateSection("")
@@ -144,10 +134,39 @@ local Section4 = Tab2:CreateSection("Background")
 
 Section1:CreateLabel("Welcome, "..curpname..",")
 Section1:CreateLabel("Thank you for purchasing")
+Section1:CreateLabel("Press F9 to view your current Tokens")
 
-local Button1 = Section1:CreateButton("Check Map", function()
+local cap1 = game:GetService("Players").LocalPlayer.Data.Items.SessionGachaToken
+cap1.Changed:Connect(function(newValue)
+print ("Photovore Token received! Current amount:"..(newValue).."!")
+end)
+
+local cap2 = game:GetService("Players").LocalPlayer.Data.Items.GalaxyExplorerGachaToken
+cap2.Changed:Connect(function(newValue)
+print ("Galaxy Token received! Current amount:"..(newValue).."!")
+end)
+
+local cap3 = game:GetService("Players").LocalPlayer.Data.Items.MutateExplorerGachaToken
+cap3.Changed:Connect(function(newValue)
+print ("Mecha Token received! Current amount:"..(newValue).."!")
+end)
+
+local cap4 = game:GetService("Players").LocalPlayer.Data.Items.MonsterExplorerGachaToken
+cap4.Changed:Connect(function(newValue)
+print ("Monster Token received! Current amount: "..(newValue).."!")
+end)
+
+print ("Welcome to Magnum Opum")
+print ("Photovore Tokens: "..(cap1).Value.."!")
+print ("Galaxy Tokens: "..(cap2).Value.."!")
+print ("Mecha Tokens: "..(cap3).Value.."!")
+print ("Monster Tokens: "..(cap4).Value.."!")
+
+local Toggle1 = Section1:CreateToggle("Auto Map", Settings.AutoAttack, function(State)
+Settings.AutoAttack = State
 spawn(function()
-    wait()
+while Settings.AutoAttack do
+    wait(15)
     pcall(
         function()
 game:GetService("Workspace"):WaitForChild("Regions")
@@ -159,6 +178,7 @@ for i,v in pairs(game:GetService("Workspace").Regions:GetChildren()) do
     end
 end 
 end)
+end
 end)
 end)
 
@@ -227,127 +247,6 @@ while Settings.AutoAttack do
 end
 end)
 end)
-
-local done = false
-
---[[local Toggle1 = Section1:CreateToggle("AutoEggs", Settings.AutoAttack, function(State)
-Settings.AutoAttack = State
-spawn(function()
-while Settings.AutoAttack do
-    wait()
-    pcall(
-        function()
-	
-            game:GetService("Players").LocalPlayer.RemoteEvent:FireServer("drink",workspace.Water)
-            local args = {
-    [1] = "CollectEgg"
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("EggHuntMinigame"):FireServer(unpack(args))
-            wait (0.1)
-            Teleport(Models,getNearestGreens().CFrame)
-            wait (0.1)
-            getNearestGreens():Destroy()
-	    done = true
-end)
-end
-end)
-end)]]--
-
---[[local Toggle1 = Section1:CreateToggle("Auto Server Hop", Settings.AutoAttack, function(State)
-Settings.AutoAttack = State
-spawn(function()
-while Settings.AutoAttack do
-    wait(5)
-    pcall(
-        function()
-	if done then
-            local childrenInObject = game:GetService("Workspace")["Easter Assets"].EggDump:GetChildren() --returns a table
-	if #childrenInObject == 0 then
-            local PlaceID = game.PlaceId
-local AllIDs = {}
-local foundAnything = ""
-local actualHour = os.date("!*t").hour
-local Deleted = false
-local File = pcall(function()
-    AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
-end)
-if not File then
-    table.insert(AllIDs, actualHour)
-    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-end
-function TPReturner()
-    local Site;
-    if foundAnything == "" then
-        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-    else
-        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-    end
-    local ID = ""
-    if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-        foundAnything = Site.nextPageCursor
-    end
-    local num = 0;
-    for i,v in pairs(Site.data) do
-        local Possible = true
-        ID = tostring(v.id)
-        if tonumber(v.maxPlayers) > tonumber(v.playing) then
-            for _,Existing in pairs(AllIDs) do
-                if num ~= 0 then
-                    if ID == tostring(Existing) then
-                        Possible = false
-                    end
-                else
-                    if tonumber(actualHour) ~= tonumber(Existing) then
-                        local delFile = pcall(function()
-                            delfile("NotSameServers.json")
-                            AllIDs = {}
-                            table.insert(AllIDs, actualHour)
-                        end)
-                    end
-                end
-                num = num + 1
-            end
-            if Possible == true then
-                table.insert(AllIDs, ID)
-                wait()
-                pcall(function()
-                    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-                    wait()
-                    game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-                end)
-                wait(4)
-            end
-        end
-    end
-end
-
-function Teleport()
-    while wait() do
-        pcall(function()
-            TPReturner()
-            if foundAnything ~= "" then
-                TPReturner()
-            end
-        end)
-    end
-end
-
--- If you'd like to use a script before server hopping (Like a Automatic Chest collector you can put the Teleport() after it collected everything.
-Teleport()
-end
-end
-end)
-end
-end)]]--
-
-
---[[local Button1 = Section1:CreateButton("Teleport to Mission (Incase Auto Breaks)", function()
-
-   Teleport(Models, getNearestMeat().CFrame)
-   wait(0.2)
-  fireproximityprompt(game:GetService("Workspace")["Easter Assets"].EggBasket["Meshes/EggBasket_Basket"].ProximityPrompt, 1, true)
- end)]]--
 
 local Button1 = Section1:CreateButton("Server Hop", function()
 local PlaceID = game.PlaceId
