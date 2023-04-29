@@ -342,10 +342,12 @@ end
 Teleport()
 
 
-Section1:CreateLabel("Current Weather: "..game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Weather.Text..".")
-local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
+
 	Window:Toggle(State)
 end)
+
+Section1:CreateLabel("Current Weather: "..game:GetService("Players").LocalPlayer.PlayerGui.HUD.Minimap.Weather.Text..".")
+local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
 Toggle3:CreateKeybind(tostring(Config.Keybind):gsub("Enum.KeyCode.", ""), function(Key)
 	Config.Keybind = Enum.KeyCode[Key]
 end)
