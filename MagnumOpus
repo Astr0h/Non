@@ -137,17 +137,6 @@ Section1:CreateLabel("Thank you for purchasing")
 Section1:CreateLabel("Press F9 to view your current Tokens")
 Section1:CreateLabel("Current Season: "..game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("HUD").Minimap.Season.Text..".")
 
-local args = {
-    [1] = "spawn",
-    [2] = {
-        ["Info"] = {},
-        ["DinoType"] = "Kiiwin"
-    }
-}
-
-
-game:GetService("Players").LocalPlayer:WaitForChild("RemoteEvent"):FireServer(unpack(args))
-
 local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
 local cap1 = game:GetService("Players").LocalPlayer.Data.Items.ExplorerGachaToken
 cap1.Changed:Connect(function(newValue)
@@ -320,7 +309,6 @@ while Settings.AutoAttack do
 	   game:GetService("Players").LocalPlayer.RemoteEvent:FireServer("drink",workspace.Water)
   end)
 end
-
 end)
 end)
 
@@ -339,6 +327,18 @@ while Settings.AutoAttack do
 end
 end)
 end)
+
+local args = {
+    [1] = "spawn",
+    [2] = {
+        ["Info"] = {},
+        ["DinoType"] = "Kiiwin"
+    }
+}
+
+
+game:GetService("Players").LocalPlayer:WaitForChild("RemoteEvent"):FireServer(unpack(args))
+
 
 function Teleport()
     while wait() do
