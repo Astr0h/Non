@@ -203,7 +203,6 @@ local File = pcall(function()
     if weather == bad then
         warn ("No Famine / Drought")
     AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
-end
 if not File then
     table.insert(AllIDs, actualHour)
     writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
@@ -252,6 +251,7 @@ function TPReturner()
             end
         end
     end
+end
 end
 end)
 end)
